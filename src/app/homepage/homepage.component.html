@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="page-heading">
+        <h3>My Portfolio</h3>
+        <button type="button" class="btn btn-primary" routerLink="/addNewStock">Add New Stock</button>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <!-- <th scope="col"></th> -->
+            <th scope="col">Name</th>
+            <th scope="col">Purchase Date</th>
+            <th scope="col">Purchase Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let s of stocks" routerLink="/stockDetailView/{{s._id}}">
+            <!-- <th scope="row">{{s}}</th> -->
+            <td>{{s.stockName}}</td>
+            <td>{{s.stockDate}}</td>
+            <td>{{s.stockPrice}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+

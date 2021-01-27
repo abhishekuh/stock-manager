@@ -1,0 +1,18 @@
+<div class="container">
+    <h3>Add New Stock</h3>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Stock Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="SBI" [(ngModel)]="stockName">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput2" class="form-label">Date</label>
+        <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="21/01/2021" [(ngModel)]="stockDate">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput3" class="form-label">Price</label>
+        <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="125" [(ngModel)]="stockPrice">
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="saveStock()">Save</button>
+</div>
