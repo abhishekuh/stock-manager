@@ -30,8 +30,7 @@ export class StockService {
     }
 
     getStockDetail(id){
-      return this.http.get(this.url+'/stock/getStockDetail',id)
+      return this.http.get(this.url+'/stock/getStockDetail',{params:{id:id}})
     }
-
-    
+   
 }
