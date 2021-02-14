@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StockService } from "../stockService.service";
+import { FormArray,FormBuilder,FormGroup,FormControl, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-stock',
@@ -7,26 +9,47 @@ import { StockService } from "../stockService.service";
   styleUrls: ['./add-stock.component.sass']
 })
 export class AddStockComponent implements OnInit {
-
+  addStockForm : FormGroup
   stockName : String
-  stockDate : Date
+  stockDate : any
   stockPrice : Number
+  stockArray : any
 
-  constructor(private stockService:StockService) { }
+  
+
+  constructor(private stockService:StockService,private fb:FormBuilder,private router:Router) { }
 
   ngOnInit() {
+    this.addStockForm = this.fb.group({
+      stockName: [''],
+      stockInfo: this.fb.array([
+        this.addnewFormGroup()
+      ])
+    });
+    
   }
 
-  saveStock(){
-    const data = {
-      stockName : this.stockName,
-      stockDate : this.stockDate,
-      stockPrice : this.stockPrice,
-    }
+  addnewFormGroup(){
+    return this.fb.group({
+      stockDate: [''],
+      stockPrice: [''],
+    })
+  }
 
-    // console.log(data)
+  addNewEntry(){
+    (<FormArray>this.addStockForm.get('stockInfo')).push(this.addnewFormGroup())
+  }
+
+  onClickSubmit(){
+    // const data = {
+    //   stockName : this.stockName,
+    //   detail : this.stockArray,
+    // }
+    const data = this.addStockForm.value
+    console.log(data)
     this.stockService.saveStock(data).subscribe(res => {
       console.log(res)
+      this.router.navigateByUrl('/home')
     })
   }
 

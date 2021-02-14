@@ -10,7 +10,7 @@ import { HttpHeaders } from '@angular/common/http';
 
 export class StockService {
 
-    url = 'http://localhost:3000'
+    url = 'http://34.245.126.18/'
 
     constructor(private http:HttpClient){
     }
@@ -22,7 +22,7 @@ export class StockService {
             Authorization: 'my-auth-token'
           })
         };
-        return this.http.post(`http://localhost:3000/stock/createStock`,data,httpOptions)
+        return this.http.post(this.url+'/stock/createStock',data,httpOptions)
     }
 
     getAllStocks(){

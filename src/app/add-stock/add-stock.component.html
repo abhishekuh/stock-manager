@@ -1,18 +1,30 @@
 <div class="container">
+  <div class="page-heading">
     <h3>Add New Stock</h3>
+    <span class="add-more-btn" (click)="addNewEntry()">Add More</span>
+  </div>
 
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Stock Name</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="SBI" [(ngModel)]="stockName">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput2" class="form-label">Date</label>
-        <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="21/01/2021" [(ngModel)]="stockDate">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput3" class="form-label">Price</label>
-        <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="125" [(ngModel)]="stockPrice">
-      </div>
+  <form [formGroup]="addStockForm" (ngSubmit)="onClickSubmit(addStockForm.value)">
 
-      <button type="button" class="btn btn-primary" (click)="saveStock()">Save</button>
+    <div class="mb-3 form-item-margin" >
+        <label class="form-label">Stock Name</label>
+        <input type="text" class="form-control" id="stockName" placeholder="eg. SBI" formControlName="stockName">
+      </div>
+      
+      <div formArrayName="stockInfo" *ngFor="let formItem of addStockForm.get('stockInfo').controls;let i = index" >
+      <div class="add-stock-form-holder" [formGroupName]="i">
+        <div class="mb-3 form-item-margin" >
+        <label class="form-label">Date</label>
+        <input type="text" class="form-control" formControlName="stockDate"  placeholder="21/01/2021" >
+      </div>
+      
+      <div class="mb-3 form-item-margin" >
+        <label class="form-label">Price</label>
+        <input type="text" class="form-control" formControlName="stockPrice" placeholder="Rs. 125">
+      </div>
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+      
 </div>

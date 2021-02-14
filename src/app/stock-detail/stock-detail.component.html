@@ -1,9 +1,26 @@
 <div class="container">
-    <div class="page-heading">
+    <div>
         <h3>{{stockData?.stockName}}</h3>
-        <div>
-            <div>{{stockData?.stockDate}}</div>
-            <div>{{stockData?.stockPrice}}</div>
+        <div *ngFor="let info of stockData?.stockInfo">
+            <span>Date : {{info?.stockDate}}  </span>
+            <span>Price : {{info?.stockPrice}}</span>
         </div>
     </div>
+    <div id="container"></div>
 </div>
+
+<!-- <div>
+    <div *ngFor="let i of stockLength">
+        <span>Hello</span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput2" class="form-label">Date</label>
+        <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="21/01/2021" [(ngModel)]="stockDate">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput3" class="form-label">Price</label>
+        <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="125" [(ngModel)]="stockPrice">
+      </div>
+    <button type="button" class="btn btn-primary" routerLink="/addNewStock">Add prices</button>
+</div> -->
+

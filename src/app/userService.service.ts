@@ -6,13 +6,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-    url = 'http://localhost:3000'
+    url = 'http://34.245.126.18/'
 
     constructor(private http:HttpClient){
     }
 
     getAllUsers(){
-        return this.http.get(`http://localhost:3000/user/getUser`)
+        return this.http.get(this.url+'/user/getUser')
     }
 
     
